@@ -1,7 +1,8 @@
 import React from 'react'
 import "./sidebar.css"
 import { Bookmark, Chat, Event, Group, PlayCircleFilled, QuestionMark, RssFeed, School, WorkOutline } from '@mui/icons-material'
-
+import CloseFriend from '../closeFriend/CloseFriend'
+import { Users } from '../../dummyData'
 export const Sidebar = () => {
   return (
     <div className='sidebar'><div className="sidebarWrapper">
@@ -49,91 +50,11 @@ export const Sidebar = () => {
         <button className="sidebarButton">showMore</button>
         <hr className='sidebarHr'/>
         <ul className="sidebarFriendList">
-            <li className="sidebarFriend">
-            <img src="/assets/profile/person14.jpg" alt="" className="sidebarFriendImg" />
-            <span className="sidebarFriendName">tom fake</span>
-            </li>
-            <li className="sidebarFriend">
-            <img src="/assets/profile/person14.jpg" alt="" className="sidebarFriendImg" />
-            <span className="sidebarFriendName">tom fake</span>
-            </li>
-            <li className="sidebarFriend">
-            <img src="/assets/profile/person14.jpg" alt="" className="sidebarFriendImg" />
-            <span className="sidebarFriendName">tom fake</span>
-            </li>
-            <li className="sidebarFriend">
-            <img src="/assets/profile/person14.jpg" alt="" className="sidebarFriendImg" />
-            <span className="sidebarFriendName">tom fake</span>
-            </li>
-            <li className="sidebarFriend">
-            <img src="/assets/profile/person14.jpg" alt="" className="sidebarFriendImg" />
-            <span className="sidebarFriendName">tom fake</span>
-            </li>
-              
-            <li className="sidebarFriend">
-            <img src="/assets/profile/person14.jpg" alt="" className="sidebarFriendImg" />
-            <span className="sidebarFriendName">tom fake</span>
-            </li>
-            <li className="sidebarFriend">
-            <img src="/assets/profile/person14.jpg" alt="" className="sidebarFriendImg" />
-            <span className="sidebarFriendName">tom fake</span>
-            </li>
-            <li className="sidebarFriend">
-            <img src="/assets/profile/person14.jpg" alt="" className="sidebarFriendImg" />
-            <span className="sidebarFriendName">tom fake</span>
-            </li>
-            <li className="sidebarFriend">
-            <img src="/assets/profile/person14.jpg" alt="" className="sidebarFriendImg" />
-            <span className="sidebarFriendName">tom fake</span>
-            </li>
-            <li className="sidebarFriend">
-            <img src="/assets/profile/person14.jpg" alt="" className="sidebarFriendImg" />
-            <span className="sidebarFriendName">tom fake</span>
-            </li>
-            <li className="sidebarFriend">
-            <img src="/assets/profile/person14.jpg" alt="" className="sidebarFriendImg" />
-            <span className="sidebarFriendName">tom fake</span>
-            </li>
-            <li className="sidebarFriend">
-            <img src="/assets/profile/person14.jpg" alt="" className="sidebarFriendImg" />
-            <span className="sidebarFriendName">tom fake</span>
-            </li>
-            <li className="sidebarFriend">
-            <img src="/assets/profile/person14.jpg" alt="" className="sidebarFriendImg" />
-            <span className="sidebarFriendName">tom fake</span>
-            </li>
-            <li className="sidebarFriend">
-            <img src="/assets/profile/person14.jpg" alt="" className="sidebarFriendImg" />
-            <span className="sidebarFriendName">tom fake</span>
-            </li>
-            <li className="sidebarFriend">
-            <img src="/assets/profile/person14.jpg" alt="" className="sidebarFriendImg" />
-            <span className="sidebarFriendName">tom fake</span>
-            </li>
-            <li className="sidebarFriend">
-            <img src="/assets/profile/person14.jpg" alt="" className="sidebarFriendImg" />
-            <span className="sidebarFriendName">tom fake</span>
-            </li>
-            <li className="sidebarFriend">
-            <img src="/assets/profile/person14.jpg" alt="" className="sidebarFriendImg" />
-            <span className="sidebarFriendName">tom fake</span>
-            </li>
-            <li className="sidebarFriend">
-            <img src="/assets/profile/person14.jpg" alt="" className="sidebarFriendImg" />
-            <span className="sidebarFriendName">tom fake</span>
-            </li>
-            <li className="sidebarFriend">
-            <img src="/assets/profile/person14.jpg" alt="" className="sidebarFriendImg" />
-            <span className="sidebarFriendName">tom fake</span>
-            </li>
-            <li className="sidebarFriend">
-            <img src="/assets/profile/person14.jpg" alt="" className="sidebarFriendImg" />
-            <span className="sidebarFriendName">tom fake</span>
-            </li>
-            <li className="sidebarFriend">
-            <img src="/assets/profile/person14.jpg" alt="" className="sidebarFriendImg" />
-            <span className="sidebarFriendName">tom fake</span>
-            </li>
+          {
+               Users.map((item)=>(<CloseFriend user={item}/>))
+          }
+           
+           
               
         </ul>
         
