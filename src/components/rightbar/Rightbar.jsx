@@ -2,7 +2,7 @@ import React from 'react'
 import "./rightbar.css"
 import { Users } from '../../dummyData'
 import Online from '../online/Online'
-export const Rightbar = () => {
+export const Rightbar = ({profile}) => {
   const HomeRightbar=()=>{
     return(
       <>
@@ -17,7 +17,9 @@ export const Rightbar = () => {
 <ul className="rightbarFriendList">
 {Users.map(item=><Online key={item.id} user={item}/>) 
 }
-</ul></>)}
+</ul></>)
+
+}
 
 const ProfileRightbar=()=>{
   return (
@@ -94,8 +96,8 @@ const ProfileRightbar=()=>{
   return (
     <div className='rightbar'>
       <div className="rightbarWrapper">
-        <ProfileRightbar/>
-        {/* <HomeRightbar/> */}
+        {profile ?<ProfileRightbar/> : <HomeRightbar/>}
+        
       </div>
     </div>
   )
