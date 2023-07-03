@@ -3,11 +3,13 @@ import SearchIcon from '@mui/icons-material/Search';
 import PersonIcon from '@mui/icons-material/Person';
 import ChatIcon from '@mui/icons-material/Chat';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import { useNavigate } from 'react-router-dom';
 export default function Topbar() {
+  const navigate=useNavigate();
   return (
     <div className='topbarContainer'>
      <div className="topbarLeft">
-      <span className='logo'>Acebook</span>
+      <span className='logo' onClick={()=>{navigate('/')}}>MySocialGram</span>
      </div>
      <div className="topbarCenter">
       <div className="searchbar">

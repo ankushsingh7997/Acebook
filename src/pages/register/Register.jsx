@@ -1,7 +1,7 @@
 import React from 'react'
 import "./register.css"
 
-function Register() {
+export const Register=()=> {
   return (
     <div className='login'>
   <div className="loginWrapper">
@@ -30,4 +30,3 @@ function Register() {
   )
 }
 
-export default Register

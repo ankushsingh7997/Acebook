@@ -4,8 +4,10 @@ import { Bookmark, Chat, Event, Group, PlayCircleFilled, QuestionMark, RssFeed, 
 import CloseFriend from '../closeFriend/CloseFriend'
 import { Users } from '../../dummyData'
 export const Sidebar = () => {
+     
   return (
-    <div className='sidebar'><div className="sidebarWrapper">
+    <div className='sidebar'>
+     <div className="sidebarWrapper">
         <ul className="sidebarList">
         <li className="sidebarListItem">
              <RssFeed className='sidebarIcon'/>

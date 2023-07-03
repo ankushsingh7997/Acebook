@@ -1,7 +1,7 @@
 import React from 'react'
 import "./login.css"
 
-function Login() {
+export const Login=()=> {
   return (
     <div className='login'>
   <div className="loginWrapper">
@@ -28,4 +28,3 @@ function Login() {
   )
 }
 
-export default Login
