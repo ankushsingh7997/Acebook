@@ -16,8 +16,8 @@ export const Register=()=> {
     <div className="loginBox">
         <input placeholder='username' className="loginInput"/>
         <input placeholder='Email' className="loginInput"/>
-        <input placeholder='Password' className="loginInput"/>
-        <input placeholder='Confirm Password' className="loginInput"/>
+        <input type='password' placeholder='Password' className="loginInput"/>
+        <input type='password' placeholder='Confirm Password' className="loginInput"/>
         <button className="loginButton">Sign Up</button>
        
         <button className="loginRegisterButton">Log into Account</button>
