@@ -12,3 +12,21 @@ catch(err)
 }
 
 }
+
+export const registerCall=async(userCredentials)=>{
+    
+    try{
+       
+       
+        return await axios.post('http://localhost:4000/api/auth',userCredentials).catch((err)=>err)
+        
+        
+        
+        
+    }
+    catch(err)
+    {
+    //    console.log(err)
+    }
+    
+    }

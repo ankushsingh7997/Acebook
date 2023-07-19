@@ -1,7 +1,36 @@
-import React from 'react'
+import React,{useRef} from 'react'
 import "./register.css"
+import { registerCall } from '../../apiCalls'
+import {useNavigate} from 'react-router-dom'
 
 export const Register=()=> {
+  const username=useRef()
+  const email=useRef()
+  const password=useRef()
+  const confirmPassword=useRef()
+  const navigate=useNavigate()
+
+  const handleClick= async (e)=>{
+    e.preventDefault()
+    
+    if(password.current.value!==confirmPassword.current.value) confirmPassword.current.setCustomValidity('password does not match')
+    else
+    {
+      
+      const res={username:username.current.value,email:email.current.value,password:password.current.value}
+      // api call
+      const result=await registerCall(res);
+      
+
+      // after registration navigate to login page
+      result.status? navigate('/login'):console.log(new Error('regestration fail'))
+      
+    
+
+  } 
+
+}
+
   return (
     <div className='login'>
   <div className="loginWrapper">
@@ -13,15 +42,15 @@ export const Register=()=> {
 
   </div>
   <div className="loginright">
-    <div className="loginBox">
-        <input placeholder='username' className="loginInput"/>
-        <input placeholder='Email' className="loginInput"/>
-        <input type='password' placeholder='Password' className="loginInput"/>
-        <input type='password' placeholder='Confirm Password' className="loginInput"/>
-        <button className="loginButton">Sign Up</button>
+    <form className="loginBox" onSubmit={handleClick}>
+        <input ref={username} placeholder='username' required className="loginInput"/>
+        <input ref={email} type='email' placeholder='Email' required className="loginInput"/>
+        <input ref={password} minLength='6' type='password' placeholder='Password' required className="loginInput"/>
+        <input ref={confirmPassword} type='password' placeholder='Confirm Password' required className="loginInput"/>
+        <button type='submit' className="loginButton">Sign Up</button>
        
         <button className="loginRegisterButton">Log into Account</button>
-    </div>
+    </form>
   </div>
 
   </div>
