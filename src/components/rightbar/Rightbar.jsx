@@ -21,7 +21,8 @@ export const Rightbar = ({user}) => {
 <ul className="rightbarFriendList">
 {Users.map(item=><Online key={item.id} user={item}/>) 
 }
-</ul></>)
+</ul>
+</>)
 
 }
 

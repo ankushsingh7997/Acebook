@@ -1,9 +1,10 @@
 import { MoreVert } from "@mui/icons-material"
 import "./post.css"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import axios from "axios";
 import {format} from "timeago.js"
 import { useNavigate } from "react-router-dom";
+import {AuthContex} from '../../context/AuthContext'
 
 function Post({post}) {
     const[like,setLike]=useState(post.likes.length);
@@ -11,9 +12,18 @@ function Post({post}) {
     const PF=process.env.REACT_APP_PUBLIC_FOLDER;
     const[user,setUser]=useState({});
     const navigate=useNavigate();
+    const {user:loginuser}=useContext(AuthContex)
+
+    useEffect(()=>{
+      setIsLiked(post.likes.includes(loginuser._id))
+    },[loginuser._id,post.likes])
 
 
-    const likeHandler=()=>{
+    const likeHandler=async()=>{
+      // console.log(loginuser.user._id)
+      const body={postId:post._id,userId:post.userId}
+      await axios.put(`http://localhost:4000/api/posts/${loginuser._id}/like`,body)
+
       setLike(!isLiked?like+1:like-1)
       setIsLiked(!isLiked)
 
