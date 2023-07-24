@@ -77,6 +77,7 @@
 {
     
     display: flex;
+    align-items: center;
     
 }
 .topbarIconItem
@@ -107,5 +108,11 @@ font-size: 12px;
     height: 32px;
     border-radius: 50%;
     object-fit: cover;
+    cursor: pointer;
+}
+
+.logout:hover
+{
+    color:red;
     cursor: pointer;
 }

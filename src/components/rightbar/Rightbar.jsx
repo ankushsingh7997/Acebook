@@ -1,7 +1,5 @@
 import React, {  useContext, useEffect, useState } from 'react'
 import "./rightbar.css"
-import { Users } from '../../dummyData'
-import Online from '../online/Online'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { AuthContex } from '../../context/AuthContext'
@@ -28,11 +26,8 @@ export const Rightbar = ({user}) => {
    <b>udisha sharma</b> and <b>3 other friends </b>have birthday today</span>
 </div>
 <img src="assets/ad.png" alt="" className="rightbarAd" />
-<h4 className="rightbarTitle">Online Friends</h4>
-<ul className="rightbarFriendList">
-{Users.map(item=><Online key={item.id} user={item}/>) 
-}
-</ul>
+
+
 </>)
 
 }
@@ -41,7 +36,7 @@ const ProfileRightbar=()=>{
   const[followed,setFollow]=useState(false);
   useEffect(()=>{
     setFollow(currentUser.followers.includes(user?._id)) 
-  },[currentUser,user._id])
+  },[])
 
   const[friends,setFriends]=useState([])
   
@@ -75,7 +70,7 @@ const ProfileRightbar=()=>{
   if(user._id) getFriends();
   
 
-  },[user._id])
+  },[])
   return (
     <>{user.username!==currentUser.username && (
       <button className="rightvarFollowButton" onClick={handleFollow}>

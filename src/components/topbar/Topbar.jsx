@@ -1,15 +1,21 @@
 import './topbar.css'
 import SearchIcon from '@mui/icons-material/Search';
 import PersonIcon from '@mui/icons-material/Person';
-import ChatIcon from '@mui/icons-material/Chat';
-import NotificationsIcon from '@mui/icons-material/Notifications';
+
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContex } from '../../context/AuthContext';
 export default function Topbar() {
   const navigate=useNavigate();
-  const {user}=useContext(AuthContex)
+  const {user,dispatch}=useContext(AuthContex)
   const PF=process.env.REACT_APP_PUBLIC_FOLDER;
+
+
+  const handleLogout=()=>{
+    
+    dispatch({type:'LOGOUT'})
+    
+  }
   return (
     <div className='topbarContainer'>
      <div className="topbarLeft">
@@ -29,27 +35,13 @@ export default function Topbar() {
 
      </div>
      <div className="topbarIcons">
-      <div className="topbarIconItem">
+      
+      <div className="topbarIconItem ">
       <PersonIcon />
-      <span className="topbarIconBadge">
-        1
-      </span>
-
-      </div>
+       </div>
+       <span className='logout' onClick={handleLogout}>Logout</span>
        
-      <div className="topbarIconItem">
-      <ChatIcon/>
-      <span className="topbarIconBadge">
-        2
-      </span>
-
-      </div><div className="topbarIconItem">
-      <NotificationsIcon/>
-      <span className="topbarIconBadge">
-        1
-      </span>
-
-      </div>
+     
       
      </div>
      <img  src={user.profilePicture ?user.profilePicture:PF+'profile/noAvatar.png'} alt="" className='topbarImg' onClick={()=>{navigate(`/profile/${user.username}`)}} />
