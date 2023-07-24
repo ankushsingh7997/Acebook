@@ -7,7 +7,7 @@ import axios from 'axios';
 export default function Share() {
   const {user}=useContext(AuthContex)
   const PF=process.env.REACT_APP_PUBLIC_FOLDER;
-  const desc=useRef(null);
+  const desc=useRef();
   const [file,setFile]=useState(null)
   const submitHandler=async (e)=>{
     e.preventDefault();
@@ -16,7 +16,7 @@ export default function Share() {
     {
     const formData=new FormData();
     formData.append("userId",user._id)
-    if(desc) formData.append("desc",desc)
+    if(desc.current.value) formData.append("desc",desc.current.value)
     if(file) formData.append("image", file, file.name);
     const config = {
       headers: {
@@ -27,8 +27,9 @@ export default function Share() {
    try
    {
     await axios.post('http://localhost:4000/api/posts/'+user._id,formData,config);
-    desc.current.value=null
+    desc.current.value=''
     setFile(null)
+    window.location.reload()
    }
    catch(err)
    {

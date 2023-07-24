@@ -13,7 +13,9 @@ export const Feed = ({username}) => {
   useEffect(()=>{
     const getFeed=async()=>{
       const postData=username?await axios.get("http://localhost:4000/api/posts/profile/"+username) : await axios.get(`http://localhost:4000/api/posts/${user._id}/gettimeline`)
-      setPosts(postData.data.posts)
+      setPosts(postData.data.posts.sort((p1,p2)=>{
+       return new Date(p2.createdAt)-new Date(p1.createdAt)
+      }))
       }
     getFeed();
 
