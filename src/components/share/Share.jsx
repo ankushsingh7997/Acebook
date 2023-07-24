@@ -9,6 +9,7 @@ export default function Share() {
   const PF=process.env.REACT_APP_PUBLIC_FOLDER;
   const desc=useRef();
   const [file,setFile]=useState(null)
+  
   const submitHandler=async (e)=>{
     e.preventDefault();
     if(!file&&!desc.current.value) alert('pass something to upload')
@@ -27,7 +28,7 @@ export default function Share() {
    try
    {
     await axios.post('http://localhost:4000/api/posts/'+user._id,formData,config);
-    desc.current.value=''
+    desc.current.value=null
     setFile(null)
     window.location.reload()
    }
@@ -42,7 +43,7 @@ export default function Share() {
     <div className='share'>
       <div className="shareWrapper">
         <div className="shareTop">
-         <img className="shareProfileImg" src={user.profilePicture?PF+user.profilePicture:PF+'profile/noAvatar.png'} alt="" />
+         <img className="shareProfileImg" src={user.profilePicture?user.profilePicture:PF+'profile/noAvatar.png'} alt="" />
 
          <input ref={desc} placeholder={`What is in your mind ${user.username} ?`} className="shareInput" />
 

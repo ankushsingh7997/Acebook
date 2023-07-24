@@ -52,7 +52,7 @@ export default function Topbar() {
       </div>
       
      </div>
-     <img  src={user.profilePicture ? PF+user.profilePicture:PF+'profile/noAvatar.png'} alt="" className='topbarImg' onClick={()=>{navigate(`/profile/${user.username}`)}} />
+     <img  src={user.profilePicture ?user.profilePicture:PF+'profile/noAvatar.png'} alt="" className='topbarImg' onClick={()=>{navigate(`/profile/${user.username}`)}} />
     
 
     </div>

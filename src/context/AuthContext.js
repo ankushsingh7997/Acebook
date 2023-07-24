@@ -7,7 +7,7 @@ const INITIAL_STATE = {
     "username": "ankushsingh33",
     "password": "$2b$07$562pm9FzIXEs.dknpnRShOGDZ.UPMySwR/jZPNYCguL56Y1JmlZh6",
     "email": "ankussingh@gmail.com",
-    "profilePicture": "",
+    "profilePicture": "http://res.cloudinary.com/djqgmtozb/image/upload/v1690196676/1690196675121_resized_image.jpg",
     "coverPicture": "",
     "followers": [
         "6486bbefe7ad5d59e543c653",
@@ -29,6 +29,7 @@ const INITIAL_STATE = {
     "from": "jammu and kashmir",
     "relationship": 1
 },
+
   isFetching: false,
   error: false,
 };
