@@ -11,9 +11,9 @@ export const Home = () => {
     <>
    <Topbar/>
    <div className="homeContainer">
-   <Sidebar/>
+   {/* <Sidebar/> */}
    <Feed/>
-   <Rightbar/>
+   {/* <Rightbar/> */}
    </div>
    
    </>

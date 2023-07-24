@@ -1,27 +1,61 @@
-import React from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import "./share.css"
-import { PermMedia,Label,Room,EmojiEmotions } from '@mui/icons-material'
+import { PermMedia,Label,Room,EmojiEmotions, FourGMobiledataRounded, RemoveFromQueue } from '@mui/icons-material'
+import { AuthContex } from '../../context/AuthContext';
+import axios from 'axios';
 
 export default function Share() {
+  const {user}=useContext(AuthContex)
   const PF=process.env.REACT_APP_PUBLIC_FOLDER;
+  const desc=useRef(null);
+  const [file,setFile]=useState(null)
+  const submitHandler=async (e)=>{
+    e.preventDefault();
+    if(!file&&!desc.current.value) alert('pass something to upload')
+    else
+    {
+    const formData=new FormData();
+    formData.append("userId",user._id)
+    if(desc) formData.append("desc",desc)
+    if(file) formData.append("image", file, file.name);
+    const config = {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    };
+    
+   try
+   {
+    await axios.post('http://localhost:4000/api/posts/'+user._id,formData,config);
+    desc.current.value=null
+    setFile(null)
+   }
+   catch(err)
+   {
+   console.log(err)
+   }
+  }
+    
+  }
   return (
     <div className='share'>
       <div className="shareWrapper">
         <div className="shareTop">
-         <img className="shareProfileImg" src={`${PF}profile/person8.jpg`} alt="" />
+         <img className="shareProfileImg" src={user.profilePicture?PF+user.profilePicture:PF+'profile/noAvatar.png'} alt="" />
 
-         <input placeholder='What is in your mind Ankush?' className="shareInput" />
+         <input ref={desc} placeholder={`What is in your mind ${user.username} ?`} className="shareInput" />
 
         </div>
         <hr className='shareHr'/>
 
-        <div className="shareBottom">
+        <form className="shareBottom" onSubmit={submitHandler}>
           <div className="shareOptions">
            
-          <div className="shareOption">
+          <label htmlFor='file' className="shareOption">
               <PermMedia htmlColor="tomato" className='shareIcon'/>
               <span className="shareOptionText">Photo or video</span>
-            </div>
+              <input type="file" id='file' accept='.png,.jpeg,.jpg' onChange={(e)=>{setFile(e.target.files[0])}} style={{display:"none"}} />
+            </label>
             <div className="shareOption">
               <Label htmlColor="blue" className='shareIcon'/>
               <span className="shareOptionText">Tag</span>
@@ -35,8 +69,8 @@ export default function Share() {
               <span className="shareOptionText">Feelings</span>
             </div>
           </div>
-          <button className="shareButton">Share</button>
-        </div>
+          <button className="shareButton" type='submit'>Share</button>
+        </form>
 
       </div>
     </div>
